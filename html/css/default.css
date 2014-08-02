@@ -7,20 +7,19 @@ body {
 }
 h1, h2 {
 	color: #009847;
+	font-weight: normal;
 }
 h1 {
-	font-weight: normal;
 	font-size: 22px;
 }
 h2 {
-	font-weight: normal;
 	font-size: 18px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: #F9A6B3;
 	padding: 8px;
 }
-#nav {
+nav {
 	float:left;
 	width:200px;
 	color:white;
