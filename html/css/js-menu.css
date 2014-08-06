@@ -7,6 +7,11 @@ body {
 	height: 59px;
 	line-height: 54px;
 	border-bottom: 1px solid #ebebeb;
+	background-color: #fff;
+
+	/* メニューをスライドさせるときにヘッダの下に隠したいので z-index を指定する */
+	position: relative;
+	z-index: 2;
 }
 
 /* トグルボタン */
@@ -22,6 +27,9 @@ body {
 	margin-left: 9px;
 	cursor: pointer;
 	margin-right: 24px;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
 }
 
 .toggle-button:hover {
@@ -50,10 +58,19 @@ body {
 }
 
 /* メニュー(初期状態で非表示) */
-#menu {
+.menu {
 	position: absolute;
 	display: none;
 	padding-top: 7px;
+
+	top: -29px;
+	transition: top 220ms ease-in-out;
+
+	z-index: 1;
+}
+
+.menu-opened {
+	top: 0px;
 }
 
 /* メニュー項目 */
@@ -94,10 +111,16 @@ body {
 }
 
 /* 件数表示 */
-#results {
+.results {
 	position: absolute;
 	line-height: 43px;
 	margin-left: 16px;
+
+	top: 0px;
+	transition: top 220ms ease-in-out;
 }
 
+.results-closed {
+	top: 22px;
+}
 
