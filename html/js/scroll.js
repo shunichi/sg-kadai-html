@@ -3,7 +3,8 @@
 		var top = $("#scroll-to-top"),
 			bottom = $("#scroll-to-bottom"),
 			duration = 500,
-			body = $("body"),
+			isFirefox = typeof InstallTrigger !== 'undefined',
+			body = $(isFirefox ? "html" : "body"),
 			isTopVisible = true,
 			isBottomVisible = true;
 		top.click(function(){
