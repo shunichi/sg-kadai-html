@@ -32,3 +32,33 @@ nav {
 	background-color: white;
 	color: #666666;
 }
+
+#scroll-ui {
+	position: fixed;
+	height: 68;
+	right: 34px;
+	bottom: 68px;
+}
+
+#scroll-to-top {
+	position: absolute;
+	top: 0px;
+}
+#scroll-to-bottom {
+	position: absolute;
+	bottom:0px;
+}
+
+.scroll-button {
+	color: #777;
+	border: 1px solid #949494;
+	background-color: #f8f8f8;
+	text-align: center;
+	line-height: 32px;
+	width: 32px;
+	height: 32px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	cursor: pointer;
+}
+
