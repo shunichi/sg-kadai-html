@@ -1,3 +1,9 @@
+	fade = (elems, isFadeIn, duration) ->
+		if isFadeIn
+			elems.fadeIn(duration)
+		else
+			elems.fadeOut(duration)
+	scrollHeight = -> $(document).height() - $(window).height()
 	$(document).ready ->
 		top = $("#scroll-to-top")
 		bottom = $("#scroll-to-bottom")
@@ -7,22 +13,12 @@
 		isTopVisible = true
 		isBottomVisible = true
 		top.click ->
-			body.animate({scrollTop: 0}, duration )
+			body.animate({scrollTop: 0}, duration)
 		bottom.click ->
-			body.animate({scrollTop: $(document).height() - $(window).height()}, duration)
+			body.animate({scrollTop: scrollHeight()}, duration)
 		updateButton = ->
 			duration = "fast"
-			if isTopVisible != (body.scrollTop() > 0)
-				isTopVisible = !isTopVisible
-				if isTopVisible
-					top.fadeIn(duration)
-				else
-					top.fadeOut(duration)
-			if isBottomVisible != (body.scrollTop() < $(document).height() - $(window).height())
-				isBottomVisible = !isBottomVisible
-				if isBottomVisible
-					bottom.fadeIn(duration)
-				else
-					bottom.fadeOut(duration)
+			fade(top, isTopVisible = !isTopVisible, duration) if isTopVisible != (body.scrollTop() > 0)
+			fade(bottom, isBottomVisible = !isBottomVisible, duration) if isBottomVisible != (body.scrollTop() < scrollHeight() )
 		$(window).scroll updateButton
 		updateButton()

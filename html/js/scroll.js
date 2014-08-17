@@ -1,4 +1,13 @@
 (function(){
+	function fade(elems, isFadeIn, duration) {
+		if(isFadeIn)
+			elems.fadeIn(duration);
+		else
+			elems.fadeOut(duration);
+	}
+	function scrollHeight() {
+		return $(document).height() - $(window).height();
+	}
 	$(document).ready(function(){
 		var top = $("#scroll-to-top"),
 			bottom = $("#scroll-to-bottom"),
@@ -11,23 +20,15 @@
 			body.animate( { scrollTop: 0 }, duration );
 		});
 		bottom.click(function(){
-			body.animate( { scrollTop: $(document).height() - $(window).height() }, duration );
+			body.animate( { scrollTop: scrollHeight() }, duration );
 		});
 		var updateButton = function(){
 			var duration = "fast"
 			if( isTopVisible !== (body.scrollTop() > 0)){
-				isTopVisible = !isTopVisible;
-				if(isTopVisible)
-					top.fadeIn(duration);
-				else
-					top.fadeOut(duration);
+				fade(top, isTopVisible = !isTopVisible, duration);
 			}
-			if( isBottomVisible !== (body.scrollTop() < $(document).height() - $(window).height())){ 
-				isBottomVisible = !isBottomVisible;
-				if(isBottomVisible)
-					bottom.fadeIn(duration);
-				else
-					bottom.fadeOut(duration);
+			if( isBottomVisible !== (body.scrollTop() < scrollHeight())){ 
+				fade(bottom, isBottomVisible = !isBottomVisible, duration);
 			}
 		};
 		$(window).scroll(updateButton);
